@@ -32,6 +32,9 @@ const SearchBarContainer = styled.div`
 
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 8px;
+    position:relative;
+    z-index: 1;
+    
         
     .content {
         display: flex;
@@ -41,5 +44,8 @@ const SearchBarContainer = styled.div`
         border: none;
         font-size: 14px;
         width: 220px;
+        &:focus {
+            border: none;
+        }
     }
 `
