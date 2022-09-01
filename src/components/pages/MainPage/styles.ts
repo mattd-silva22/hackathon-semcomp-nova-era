@@ -8,6 +8,8 @@ export const MainPageContainer = styled.div`
     justify-content: center;
     width: 100%;
 
+    
+
     max-width: 512px;
     max-height: 956px;
     
