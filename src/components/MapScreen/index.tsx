@@ -12,7 +12,6 @@ export default function MapScreen() {
         <Mapa/>
         <ReportButton/>
         
-        
     </MapScreenContainer>
   )
 }

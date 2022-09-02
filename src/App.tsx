@@ -3,13 +3,16 @@ import MainPage from './components/pages/MainPage';
 import  styled  from 'styled-components'
 import {GlobalStyle} from './styles/global'
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { PageContextProvider } from './context/PageContext';
 
 function App() {
   return (
-    <AppContainer id='app'>
-      <GlobalStyle/>
-      <MainPage/>
-    </AppContainer>
+    <PageContextProvider>
+      <AppContainer id='app'>
+            <GlobalStyle/>
+            <MainPage/>
+      </AppContainer>
+    </PageContextProvider>
   );
 }
 
