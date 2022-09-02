@@ -1,8 +1,12 @@
+import "react-datepicker/dist/react-datepicker.css";
+import "react-dropdown/style.css";
+
 import { createGlobalStyle } from "styled-components";
 const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
   :root {
+    --white: #ffffff;
     --cinza: #727171;
     --esmeralda: #0b7675;
     --azul-ciano: #46e3da;
@@ -12,6 +16,7 @@ export const GlobalStyle = styled.createGlobalStyle`
       #4ec9b0 59.63%,
       rgba(76, 255, 47, 0.54) 149.16%
     );
+    --background-label: #b5b5b533;
   }
 
   * {
@@ -49,9 +54,17 @@ export const GlobalStyle = styled.createGlobalStyle`
     font-size: 16px;
   }
 
+  button {
+    border: 0;
+    color: var(--cinza);
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+
   button:hover {
     border: 0;
     cursor: pointer;
-    filter: brightness(0.7);
+    filter: brightness(0.9);
   }
 `;

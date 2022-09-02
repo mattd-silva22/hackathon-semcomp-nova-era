@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import Dropdown, { Option } from "react-dropdown";
-import DatePicker from "react-date-picker";
+import DatePicker from "react-datepicker";
+import Button from "../Button";
 
-import "react-dropdown/style.css";
+const image = require("../../assets/images/registerAlert.svg");
 
 interface ModalProps {
   visible: boolean;
@@ -35,18 +36,28 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
           <header>
             <button onClick={() => requestClose()}>X</button>
           </header>
-          <div>
+          <div className="body-register-alert-modal">
             <ContainerWrapper>
-              <img />
+              <img src={image.default} alt="Registrar alerta" />
               <label>O que você deseja relatar?</label>
               <Dropdown
                 options={options}
                 onChange={selectOption}
                 value={option}
-                placeholder="Select an option"
+                placeholder="Selecione uma opção"
               />
-              <label>Localização</label>
-              <DatePicker onChange={setDate} value={date} />
+              <label htmlFor="localizacao">Localização</label>
+              <input
+                placeholder="Digite aqui o local do relato"
+                name="localizacao"
+                className="localizacao"
+              />
+              <label>Quando?</label>
+              <DatePicker
+                selected={date}
+                onChange={(date: Date) => setDate(date)}
+              />
+              <Button onClick={() => requestClose()}>Salvar</Button>
             </ContainerWrapper>
           </div>
         </ModalWrapper>
@@ -83,21 +94,33 @@ const ModalWrapper = styled(motion.div)`
     }
   }
 
-  div {
+  .body-register-alert-modal {
     display: flex;
-    align-items: center;
     justify-content: center;
+    padding: 8px;
   }
 `;
 
 const ContainerWrapper = styled(motion.div)`
-  background-color: orange;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  gap: 16px;
+
+  .localizacao {
+    background-color: var(--background-label);
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--cinza);
+    font-size: 14px;
+    border: 0;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      outline-color: var(--cinza);
+    }
+  }
 `;
