@@ -5,7 +5,6 @@ export default function Mapa() {
 
   return (
     <MapaContainer>
-        oi
     </MapaContainer>
   )
 }
