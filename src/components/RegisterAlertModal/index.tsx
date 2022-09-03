@@ -6,6 +6,7 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import Button from "../Button";
 import pt from "date-fns/locale/pt-BR"; // the locale you want
 import { toast } from "react-toastify";
+import { useDb } from "src/hooks/useDb";
 const image = require("../../assets/images/registerAlert.svg");
 
 interface ModalProps {
@@ -15,7 +16,11 @@ interface ModalProps {
 
 registerLocale("pt", pt);
 
-const options = ["Despejo irregular de esgoto", "Despejo irregular de lixo", "Outro"];
+const options = [
+  "Despejo irregular de esgoto",
+  "Despejo irregular de lixo",
+  "Outro",
+];
 
 const RegisterAlertModal: React.FC<ModalProps> = ({
   visible,
@@ -23,14 +28,26 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
 }) => {
   const [option, setOption] = useState<string>(options[0]);
   const [date, setDate] = useState<Date>(new Date());
+  const [location, setLocation] = useState<string>("");
 
   const selectOption = (option: Option) => {
     setOption(option.value);
   };
 
+  const { addDenuncia } = useDb();
+
   const onSubmit = () => {
     toast.success("Salvo com sucesso!", {
       position: toast.POSITION.TOP_CENTER,
+    });
+
+    addDenuncia({
+      location: [
+        +location.split(",")[0].replaceAll("[", "").replaceAll(" ", ""),
+        +location.split(",")[1].replaceAll("]", "").replaceAll(" ", ""),
+      ],
+      eventDate: date.toString(),
+      category: option,
     });
     requestClose();
   };
@@ -61,6 +78,7 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
                 placeholder="Digite aqui o local do relato"
                 name="localizacao"
                 className="localizacao"
+                onChange={(e) => setLocation(e.target.value)}
               />
               <label>Quando?</label>
               <DatePicker
