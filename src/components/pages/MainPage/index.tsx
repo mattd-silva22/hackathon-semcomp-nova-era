@@ -9,7 +9,7 @@ import { MainPageContainer } from './styles'
 
 export default function MainPage() {
 
-  const {currentPage , setPage} = usePages()
+  const {currentPage } = usePages()
   return (
     <MainPageContainer>
         {currentPage === 'mapa' ? <MapScreen/> : ''}

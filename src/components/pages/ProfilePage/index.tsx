@@ -1,22 +1,30 @@
 import React from 'react'
+import { useDb } from '../../../hooks/useDb'
+import OngCard from '../../OngCard'
 import { ProfilePageContainer } from './styles'
  
 export default function ProfilePage() {
+
+  const { usersList ,ongsList} = useDb()
+  const testUser = usersList[1]
   return (
     <ProfilePageContainer>
         <div className="user-profile-area">
             <div className="user-info">
-                <img 
+              <div className="user-img-container">
+              <img 
                    alt="" 
                    className="user-img" 
-                   src='https://observatoriodosfamosos.uol.com.br/portal/wp-content/uploads/2021/08/Juliana-Caetano.jpg'
+                   src={testUser.image}
                    />
+              </div>
+                
                 <h1 className="user-name-area">
-                  fulano
+                  {testUser.name}
                 </h1>
 
                 <p className="user-description">
-                  Gente fina
+                {testUser.description}
                 </p>
 
                 <div className="medals-area">
@@ -26,8 +34,27 @@ export default function ProfilePage() {
         </div>
 
         <div className="user-ong-area">
-          <h1>ola</h1>
+          <h1 className="title-area">
+            Instituições apoiada  
+          </h1>
+          <div className="ong-list">
+              {ongsList.map(ong=>{
+                return (
+                  <OngCard 
+                    name={ong.name} 
+                    description={ong.description} 
+                    image={ong.image} 
+                    meta={ong.meta} 
+                    valorAtual={ong.valorAtual}
+                  />
+                )
+              })}
+
+          </div>
         </div>
+
+
+        
     </ProfilePageContainer>
   )
 }
