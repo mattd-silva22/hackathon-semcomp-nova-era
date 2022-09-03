@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import Dropdown, { Option } from "react-dropdown";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import Button from "../Button";
-
+import pt from "date-fns/locale/pt-BR"; // the locale you want
 const image = require("../../assets/images/registerAlert.svg");
 
 interface ModalProps {
   visible: boolean;
   requestClose: () => void;
 }
+
+registerLocale("pt", pt);
 
 const options = ["one", "two", "three"];
 
@@ -29,7 +31,7 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
     <AnimatePresence>
       {visible && (
         <ModalWrapper
-          initial={{ opacity: 0.5, y: "100%" }}
+          initial={{ opacity: 1, y: "100%" }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: "100%" }}
         >
@@ -56,6 +58,7 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
               <DatePicker
                 selected={date}
                 onChange={(date: Date) => setDate(date)}
+                locale="pt"
               />
               <Button onClick={() => requestClose()}>Salvar</Button>
             </ContainerWrapper>
@@ -109,7 +112,8 @@ const ContainerWrapper = styled(motion.div)`
   flex-direction: column;
   gap: 16px;
 
-  .localizacao {
+  .localizacao,
+  .Dropdown-control {
     background-color: var(--background-label);
     border-radius: 8px;
     padding: 12px;
@@ -121,6 +125,52 @@ const ContainerWrapper = styled(motion.div)`
     &:hover,
     &:focus {
       outline-color: var(--cinza);
+    }
+  }
+
+  .Dropdown-control {
+    cursor: pointer;
+  }
+
+  .Dropdown-menu {
+    top: calc(100% + 8px);
+    background-color: var(--background-label2);
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--cinza);
+    font-size: 14px;
+    border: 0;
+    width: 100%;
+  }
+
+  .Dropdown-option {
+    &:hover {
+      background-color: var(--white);
+      border-radius: 8px;
+    }
+  }
+
+  .Dropdown-option.is-selected {
+    background-color: var(--white);
+    border-radius: 8px;
+  }
+
+  .react-datepicker-wrapper {
+    .react-datepicker__input-container {
+      input {
+        background-color: var(--background-label);
+        border-radius: 8px;
+        padding: 12px;
+        color: var(--cinza);
+        font-size: 14px;
+        border: 0;
+        width: 100%;
+
+        &:hover,
+        &:focus {
+          outline-color: var(--cinza);
+        }
+      }
     }
   }
 `;

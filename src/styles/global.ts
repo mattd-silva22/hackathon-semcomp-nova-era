@@ -1,5 +1,5 @@
-import "react-datepicker/dist/react-datepicker.css";
 import "react-dropdown/style.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { createGlobalStyle } from "styled-components";
 const styled = { createGlobalStyle };
@@ -17,6 +17,7 @@ export const GlobalStyle = styled.createGlobalStyle`
       rgba(76, 255, 47, 0.54) 149.16%
     );
     --background-label: #b5b5b533;
+    --background-label2: #f0f0f0;
   }
 
   * {
