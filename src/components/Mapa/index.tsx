@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
-import L from "leaflet";
+import L, { divIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet.heat";
+import { useDb } from "src/hooks/useDb";
+import { renderToStaticMarkup } from "react-dom/server";
 
-const addressPoints: L.HeatLatLngTuple = [-12.9285057, -38.5085962, 123];
+
+
 
 export default function Mapa() {
   return (
@@ -18,27 +21,45 @@ export default function Mapa() {
 }
 
 function LeafletMapa() {
+  const {denunciaList} = useDb()
   const map = useMap();
 
+  const iconMarkup = renderToStaticMarkup(
+    <i className="fa fa-map-marker-alt fa-3x" />
+  );
+
+  const customMarkerIcon = divIcon({
+    html: iconMarkup,
+  });
+
   useEffect(() => {
-    const points = [addressPoints];
+    const addressPoints: L.HeatLatLngTuple[] = denunciaList.map( local => [local.location[0],local.location[1] , 25]);
+    const points = addressPoints;
 
     L.heatLayer(points, {
       radius: 10,
       blur: 24,
       maxZoom: 13,
     }).addTo(map);
-  }, [map]);
+  }, [denunciaList, map]);
   return (
     <>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <Marker position={[-12.9285057, -38.5085962]}>
-        <Popup>
-          <div>
-            ola mundo
-          </div>
-        </Popup>
-      </Marker>
+
+      {denunciaList.map(item => {
+               
+        return(
+          <Marker position={item.location as any} icon={customMarkerIcon}>
+          <Popup>
+            <div>
+              <p>{item.username}</p>
+              <p>{item.category}</p>
+              <p>{item.eventDate}</p>
+            </div>
+          </Popup>
+        </Marker>
+      )})}
+      
     </>
   );
 }

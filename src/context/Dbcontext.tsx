@@ -116,7 +116,7 @@ const initialDenuncias = [
   {
     username : "anonimo",
     category : "Despejo inregular - Dique do Tororó",
-    location : [12.9816896,-38.5052802],
+    location : [-12.983578,-38.505020],
     eventDate : "22/08/2022",
     image : "https://falario.com.br/wp-content/uploads/2019/03/2-Valoes-abandonados-em-SG-Rio-California-com-vari_00057833_0.jpg",
     cratedAt : "22/08/2022",
