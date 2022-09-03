@@ -34,6 +34,15 @@ const ReportButtonContainer = styled.button`
   bottom: 16px;
   z-index: 1001;
 
+  @media(max-width:420px){
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+      width: 300px;
+      padding: 16px 50px;    
+    }
+
   .content {
     display: flex;
     align-items: center;

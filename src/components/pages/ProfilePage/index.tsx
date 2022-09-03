@@ -12,11 +12,11 @@ export default function ProfilePage() {
         <div className="user-profile-area">
             <div className="user-info">
               <div className="user-img-container">
-              <img 
-                   alt="" 
-                   className="user-img" 
-                   src={testUser.image}
-                   />
+                <img 
+                    alt="" 
+                    className="user-img" 
+                    src={testUser.image}
+                    />
               </div>
                 
                 <h1 className="user-name-area">

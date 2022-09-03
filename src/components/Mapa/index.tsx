@@ -5,12 +5,12 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet.heat";
 
-const addressPoints: L.HeatLatLngTuple = [51.505, -0.09, 123];
+const addressPoints: L.HeatLatLngTuple = [-12.9285057, -38.5085962, 123];
 
 export default function Mapa() {
   return (
     <MapaContainer>
-      <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={[-12.9285057, -38.5085962]} zoom={13} scrollWheelZoom={false}>
         <LeafletMapa />
       </MapContainer>
     </MapaContainer>
@@ -32,9 +32,11 @@ function LeafletMapa() {
   return (
     <>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <Marker position={[51.505, -0.09]}>
+      <Marker position={[-12.9285057, -38.5085962]}>
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          <div>
+            ola mundo
+          </div>
         </Popup>
       </Marker>
     </>

@@ -6,25 +6,8 @@ export default function SearchBar() {
     <SearchBarContainer>
       <div className="content">
         <span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M20.05 11H3.95C3.42533 11 3 11.4253 3 11.95V12.05C3 12.5747 3.42533 13 3.95 13H20.05C20.5747 13 21 12.5747 21 12.05V11.95C21 11.4253 20.5747 11 20.05 11Z"
-              fill="#727171"
-            />
-            <path
-              d="M20.05 16H3.95C3.42533 16 3 16.4253 3 16.95V17.05C3 17.5747 3.42533 18 3.95 18H20.05C20.5747 18 21 17.5747 21 17.05V16.95C21 16.4253 20.5747 16 20.05 16Z"
-              fill="#727171"
-            />
-            <path
-              d="M20.05 6H3.95C3.42533 6 3 6.42533 3 6.95V7.05C3 7.57467 3.42533 8 3.95 8H20.05C20.5747 8 21 7.57467 21 7.05V6.95C21 6.42533 20.5747 6 20.05 6Z"
-              fill="#727171"
-            />
+          <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20L15.514 15.506L20 20ZM18 9.5C18 11.7543 17.1045 13.9163 15.5104 15.5104C13.9163 17.1045 11.7543 18 9.5 18C7.24566 18 5.08365 17.1045 3.48959 15.5104C1.89553 13.9163 1 11.7543 1 9.5C1 7.24566 1.89553 5.08365 3.48959 3.48959C5.08365 1.89553 7.24566 1 9.5 1C11.7543 1 13.9163 1.89553 15.5104 3.48959C17.1045 5.08365 18 7.24566 18 9.5V9.5Z" stroke="#727171" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </span>
 
@@ -41,7 +24,7 @@ const SearchBarContainer = styled.div`
 
   background-color: #fff;
   padding: 16px 18px;
-  width: 342px;
+  max-width: 342px;
 
   backdrop-filter: blur(12px);
 
@@ -58,6 +41,13 @@ const SearchBarContainer = styled.div`
     border: none;
     font-size: 14px;
     width: 220px;
+    @media(max-width:420px){
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+      width: 150px;
+    }
     &:focus {
       border: none;
     }

@@ -15,7 +15,7 @@ interface ModalProps {
 
 registerLocale("pt", pt);
 
-const options = ["one", "two", "three"];
+const options = ["Despejo irregular de esgoto", "Despejo irregular de lixo", "Outro"];
 
 const RegisterAlertModal: React.FC<ModalProps> = ({
   visible,

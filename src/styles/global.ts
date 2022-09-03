@@ -29,6 +29,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
   }
 
   html {
@@ -37,7 +38,6 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
 
   body {
-    font-family: "DM Sans", sans-serif;
     p,
     label,
     span,

@@ -4,10 +4,10 @@ export type DenunciaTypes = {
 
     username : string,
     category : string,
-    location : string,
-    eventDate : Date,
+    location : number[],
+    eventDate : string,
     image : string,
-    cratedAt : Date,
+    cratedAt : string,
     region: string
 
 }
@@ -91,7 +91,7 @@ const initialUsers = [{
   description : "Plante sementes de felicidade",
   medals : [medalList[2]],
   xp : 125,
-  image : "https://observatoriodosfamosos.uol.com.br/portal/wp-content/uploads/2021/08/Juliana-Caetano.jpg"
+  image : "https://static.vecteezy.com/system/resources/thumbnails/004/800/431/small/young-black-woman-smiling-and-looking-at-camera-in-kitchen-free-photo.jpg"
 },
 {
   id : 3,
@@ -111,11 +111,33 @@ const initialUsers = [{
 }
 ]
 
+
+const initialDenuncias = [
+  {
+    username : "anonimo",
+    category : "Despejo inregular - Dique do Tororó",
+    location : [12.9816896,-38.5052802],
+    eventDate : "22/08/2022",
+    image : "https://falario.com.br/wp-content/uploads/2019/03/2-Valoes-abandonados-em-SG-Rio-California-com-vari_00057833_0.jpg",
+    cratedAt : "22/08/2022",
+    region: "Salvador - Brotas"
+  },
+  {
+    username : "Jamile",
+    category : "Lixo em uma antiga nascente - Fonte da Água Brusca",
+    location : [-12.9612607,-38.5022631],
+    eventDate : "22/08/2022",
+    image : "http://www.ipatrimonio.org/wp-content/uploads/2018/01/Salvador-Fonte-da-%C3%81gua-Brusca-Imagem-Sipac.jpg",
+    cratedAt : "24/08/2022",
+    region: "Salvador - Centro"
+  }
+]
+
 export const DbContext = createContext({} as DbContextType)
 
 export function DbContextProvider(props: DbContextProviderProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [denunciaList, setDenunciaList] = useState<DenunciaTypes[]>([])
+  const [denunciaList, setDenunciaList] = useState<DenunciaTypes[]>(initialDenuncias)
   const [ongsList, setOngsList] = useState<OngsTypes[]>(initialOng)
   const [usersList , setUsersList] = useState<UserTypes[]>(initialUsers)
   const addDenuncia = (denuncia:DenunciaTypes)=>{
