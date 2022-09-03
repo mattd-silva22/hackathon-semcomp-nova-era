@@ -11,8 +11,8 @@ export default function MapScreen() {
   return (
     <MapScreenContainer>
       <SearchBar />
-      <Mapa />
       <ReportButton onClick={() => setShowModal(true)} />
+      <Mapa />
 
       <RegisterAlertModal
         requestClose={() => setShowModal(false)}
@@ -23,17 +23,13 @@ export default function MapScreen() {
 }
 
 const MapScreenContainer = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
-  width: 100%;
-  padding: 32px 0;
-
-  flex-direction: column;
   position: relative;
+  width: 100%;
 
   height: 100%;
 `;

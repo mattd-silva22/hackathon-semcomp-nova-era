@@ -5,6 +5,7 @@ import Dropdown, { Option } from "react-dropdown";
 import DatePicker, { registerLocale } from "react-datepicker";
 import Button from "../Button";
 import pt from "date-fns/locale/pt-BR"; // the locale you want
+import { toast } from "react-toastify";
 const image = require("../../assets/images/registerAlert.svg");
 
 interface ModalProps {
@@ -25,6 +26,13 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
 
   const selectOption = (option: Option) => {
     setOption(option.value);
+  };
+
+  const onSubmit = () => {
+    toast.success("Salvo com sucesso!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    requestClose();
   };
 
   return (
@@ -60,7 +68,7 @@ const RegisterAlertModal: React.FC<ModalProps> = ({
                 onChange={(date: Date) => setDate(date)}
                 locale="pt"
               />
-              <Button onClick={() => requestClose()}>Salvar</Button>
+              <Button onClick={() => onSubmit()}>Salvar</Button>
             </ContainerWrapper>
           </div>
         </ModalWrapper>

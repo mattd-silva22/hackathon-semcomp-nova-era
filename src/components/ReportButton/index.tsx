@@ -30,8 +30,9 @@ const ReportButtonContainer = styled.button`
   padding: 16px 100px;
   box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 24px;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  bottom: 16px;
+  z-index: 1001;
 
   .content {
     display: flex;

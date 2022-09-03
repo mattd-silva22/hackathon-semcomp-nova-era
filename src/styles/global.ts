@@ -1,11 +1,16 @@
 import "react-dropdown/style.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "leaflet/dist/leaflet.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { createGlobalStyle } from "styled-components";
 const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
   :root {
+    --leaflet-tile-filter: brightness(0.6) invert(1) contrast(3)
+      hue-rotate(200deg) saturate(0.3) brightness(0.7);
+
     --white: #ffffff;
     --cinza: #727171;
     --esmeralda: #0b7675;
