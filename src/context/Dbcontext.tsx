@@ -1,8 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
 
-
-export type PageTypes = 'mapa' | 'comunidade' | 'user' | 'denuncia'
-
 export type DenunciaTypes = {
 
     username : string,
@@ -61,6 +58,25 @@ const medalList = [
     {name :"Iara",level : 3 , image : "teste3"}
   ]
 
+const initialOng = [{
+  
+    name : "Amigos do Rio Vermelho",
+    description : "Salve o Rio das Mariquitas",
+    meta : 35000 ,
+    valorAtual : 15000,
+    image : "https://s3.amazonaws.com/hub-central/uploads/1497361271_meuriocor.png"
+},
+{
+  
+  name : "Baia Azul",
+  description : "Ajude os rios de itapagipe",
+  meta : 15000 ,
+  valorAtual : 13697,
+  image : "https://www.mbi.com.br/mbi/files/media/image/simbolopedia/municipio-itapagipe-brasao-simb-brsemg0502133402.jpg"
+}
+
+]
+
 const initialUsers = [{
   id : 1,
   name : "Guto Marcelo",
@@ -72,10 +88,10 @@ const initialUsers = [{
 {
   id: 2 ,
   name : "Victoria Neves",
-  description : "Lorem Ipsolum",
+  description : "Plante sementes de felicidade",
   medals : [medalList[2]],
   xp : 125,
-  image : "foto"
+  image : "https://observatoriodosfamosos.uol.com.br/portal/wp-content/uploads/2021/08/Juliana-Caetano.jpg"
 },
 {
   id : 3,
@@ -97,10 +113,10 @@ const initialUsers = [{
 
 export const DbContext = createContext({} as DbContextType)
 
-export function PageContextProvider(props: DbContextProviderProps) {
+export function DbContextProvider(props: DbContextProviderProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [denunciaList, setDenunciaList] = useState<DenunciaTypes[]>([])
-  const [ongsList, setOngsList] = useState<OngsTypes[]>([])
+  const [ongsList, setOngsList] = useState<OngsTypes[]>(initialOng)
   const [usersList , setUsersList] = useState<UserTypes[]>(initialUsers)
   const addDenuncia = (denuncia:DenunciaTypes)=>{
     setDenunciaList(denunciaList.concat(denuncia))

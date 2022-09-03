@@ -4,15 +4,19 @@ import  styled  from 'styled-components'
 import {GlobalStyle} from './styles/global'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { PageContextProvider } from './context/PageContext';
+import { DbContextProvider } from './context/Dbcontext';
 
 function App() {
   return (
-    <PageContextProvider>
-      <AppContainer id='app'>
-            <GlobalStyle/>
-            <MainPage/>
-      </AppContainer>
-    </PageContextProvider>
+    <DbContextProvider>
+      <PageContextProvider>
+        <AppContainer id='app'>
+              <GlobalStyle/>
+              <MainPage/>
+        </AppContainer>
+      </PageContextProvider>
+    </DbContextProvider>
+    
   );
 }
 
